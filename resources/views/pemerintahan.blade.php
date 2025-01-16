@@ -1,111 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Working Process - Wali Kota</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .pattern-line {
-            width: 100px;
-            background-image: url('img/line-pattern.png'); 
-            background-size: cover; 
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 100%;
-        }
-
-        .highlight-year {
-            position: absolute;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
-            line-height: 1.2;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
-        }
-
-        .highlight-year span {
-            display: block;
-        }
-
-        .highlight-year.right {
-            right: 15px;
-        }
-
-        .highlight-year.left {
-            left: 15px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline Wali Kota Semarang</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
-    <section>
-        <div class="bg-white text-black py-8">
-            <div class="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
-                <div class="flex flex-col w-full sticky md:top-36 lg:w-1/4 mt-2 md:mt-12 px-8">
-                    <p class="ml-2 text-red-300 uppercase tracking-loose">Informasi</p>
-                    <p class="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2"> Daftar Wali Kota dan Wakil Wali Kota Semarang</p>
-                </div>
-                <div class="ml-0 md:ml-12 lg:w-3/4 relative">
-                    <div class="pattern-line"></div>
-                    <div id="timeline"></div>
-                </div>
+<body class="bg-gray-100 font-inter">
+  <div class="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24 space-y-8 md:space-y-0">
+    <!-- Sisi kiri -->
+    <div class="flex flex-col w-full sticky md:top-36 lg:w-2/5 mt-2 md:mt-12 px-8">
+      <p class="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2">Daftar Wali Kota dan Wakil Wali Kota Semarang</p>
+    </div>
+  
+    <!-- Sisi kanan timeline -->
+    <div class="ml-12 sm:ml-24 md:ml-34 lg:w-3/5 relative">
+      <div class="relative border-l-4 border-red-800" id="timeline">
+        <!-- Elemen timeline akan diisi secara dinamis oleh JavaScript -->
+      </div>
+    </div>
+  </div>
+  
+
+
+  <script>
+    // Data Wali Kota dan Wakil Wali Kota
+
+    const timelineData = [
+      {
+        periode: "1945 - 1949",
+        namaWalikota: "Mr. Moch.lchsan",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/MrMochlchsan.jpg",
+        fotoWakilWalikota: null
+      },
+      {
+        periode: "1949 - 1951",
+        namaWalikota: "Mr. Koesoebiyono Tjondrowibowo",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/MrKoesoebiyonoTjondrowibowo.jpg",
+        fotoWakilWalikota: null
+      },
+      {
+        periode: "1951 - 1958",
+        namaWalikota: "RM. Hadisoebeno Sosrowerdoyo",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/RMHadisoebenoSosrowerdoyo.jpg",
+        fotoWakilWalikota: null
+      },
+      {
+        periode: "1958 - 1960",
+        namaWalikota: "Mr. Abdulmadjid Djojoadiningrat",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/MrAbdulmadjidDjojoadiningrat.jpg",
+        fotoWakilWalikota: null
+      },
+      {
+        periode: "1961 - 1964",
+        namaWalikota: "RM Soebagyono Tjondrokoesoemo",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/RMSoebagyonoTjondrokoesoemo.jpg",
+        fotoWakilWalikota: null
+      },
+      {
+        periode: "1964 - 1966",
+        namaWalikota: "Mr. Wuryanto",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/MrWuryanto.jpg",
+        fotoWakilWalikota: null
+      },
+      {
+        periode: "1966 - 1967",
+        namaWalikota: "Letkol. Soeparno",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/LetkolSoeparno.jpg",
+        fotoWakilWalikota: null
+      },
+      {
+        periode: "1966 - 1967",
+        namaWalikota: "Letkol. R.Warsito Soegiarto",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/LetkolRWarsitoSoegiarto.jpg",
+        fotoWakilWalikota: null
+      },
+      {
+        periode: "1973 - 1980",
+        namaWalikota: "Kolonel Hadijanto",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/KolonelHadijanto.jpg",
+        fotoWakilWalikota: null
+      },
+      {
+        periode: "1980 - 1990",
+        namaWalikota: "Kol. H. Iman Soeparto Tjakrajoeda SH",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/KolHImanSoepartoTjakrajoedaSH.jpg",
+        fotoWakilWalikota: null
+      },
+      {
+        periode: "1990 - 2000",
+        namaWalikota: "Kolonel H. Soetrisno Suharto",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/KolonelHSoetrisnoSuharto.jpg",
+        fotoWakilWalikota: null
+      },
+      {
+        periode: "2000 - 2010",
+        namaWalikota: "H. Sukawi Sutarip SH.",
+        namaWakilWalikota: "Drs. Mahfudz Ali, M.Si.",
+        fotoWalikota: "pemerintah/HSukawiSutaripSH.jpg",
+        fotoWakilWalikota: "pemerintah/DrsMahfudzAliMSi.jpg"
+      },
+      {
+        periode: "2010 - 2013",
+        namaWalikota: "Drs. H. Soemarmo HS, MSi.",
+        namaWakilWalikota: "Dr. Hendrar Prihadi, S. E., M.M.",
+        fotoWalikota: "pemerintah/DrsHSoemarmoHSMSi.jpg",
+        fotoWakilWalikota: "pemerintah/DrHendrarPrihadiSEMM.jpg"
+      },
+      {
+        periode: "2013 - 2022",
+        namaWalikota: "Dr. Hendrar Prihadi, S. E., M.M.",
+        namaWakilWalikota: "Ir. Hj. Hevearita Gunaryanti Rahayu",
+        fotoWalikota: "pemerintah/DrHendrarPrihadiSEMM.jpg",
+        fotoWakilWalikota: "pemerintah/IrHjHevearitaGunaryantiRahayu.jpg"
+      },
+      {
+        periode: "2023 - Sekarang",
+        namaWalikota: "Ir. Hj. Hevearita Gunaryanti Rahayu",
+        namaWakilWalikota: null,
+        fotoWalikota: "pemerintah/IrHjHevearitaGunaryantiRahayu.jpg",
+        fotoWakilWalikota: null
+      }
+    ];
+
+
+
+    // Fungsi untuk membuat elemen HTML untuk setiap item di timeline
+    const createTimelineItem = (data) => {
+      const hasWakil = data.namaWakilWalikota !== null;
+      const tahunAwal = data.periode.split(" - ")[0]; // Ambil tahun awal dari periode
+
+      return `
+        <div class="mb-12 ml-10 max-w-lg">
+          <!-- Tahun di atas titik timeline -->
+          <div class="absolute -left-20 text-red-800 text-3xl font-bold">${tahunAwal}</div>
+          <div class="absolute w-6 h-6 bg-red-800 rounded-full -left-3 border-4 border-white"></div>
+          <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col space-y-4">
+          
+          <!-- Periode Tahun -->
+          <div class="text-black text-xl font-semibold">Periode Tahun ${data.periode}</div>
+
+          <!-- Paket Wali Kota dan Wakil Wali Kota (Horizontal) -->
+          <div class="flex items-center space-x-6">
+            <!-- Gambar dan Nama Wali Kota -->
+            <div class="flex flex-col items-center">
+              <img src="${data.fotoWalikota}" alt="Foto Wali Kota" class="w-28 h-28 rounded-full object-cover">
+              <h2 class="text-lg font-bold text-center text-teal-600 mt-2">${data.namaWalikota}</h2>
             </div>
+
+            <!-- Jika ada Wakil Wali Kota -->
+            ${hasWakil ? `
+              <div class="flex flex-col items-center">
+                <img src="${data.fotoWakilWalikota}" alt="Foto Wakil Wali Kota" class="w-28 h-28 rounded-full object-cover">
+                <h3 class="text-lg font-bold text-center text-teal-600 mt-2">${data.namaWakilWalikota}</h3>
+              </div>
+            ` : ``}
+          </div>
         </div>
-    </section>
 
-    <script>
-        const waliKotaData = [
-            {
-                tahun: "2023 - 2026",
-                periode: "Periode 1",
-                nama: "Budi Santoso",
-                foto: "tokoh/AhmadYani.jpeg"
-            },
-            {
-                tahun: "2026 - 2028",
-                periode: "Periode 2",
-                nama: "Ahmad Prawijaya",
-                foto: "img/ahmad-prawijaya.jpg"
-            },
-            {
-                tahun: "2028 - 2030",
-                periode: "Periode 3",
-                nama: "Citra Maharani",
-                foto: "img/citra-maharani.jpg"
-            }
-        ];
 
-        const getStartYear = (yearRange) => parseInt(yearRange.split('-')[0].trim());
+        </div>
+      `;
+    };
 
-        const timelineContainer = document.getElementById('timeline');
-        waliKotaData.forEach((item, index) => {
-            const isLeft = index % 2 === 0;
-
-            timelineContainer.innerHTML += `
-                <div class="flex items-center mb-16 w-full ${isLeft ? 'flex-row-reverse' : 'flex-row'}">
-                    <div class="w-5/12 ${isLeft ? 'pr-12 text-right' : 'pl-12 text-left'}">
-                        <p class="text-base font-semibold text-black-200">${item.periode}</p>
-                        <p class="text-sm text-black-300">Tahun ${item.tahun}</p>
-                        <p class="text-sm text-black-300">Wali Kota: ${item.nama}</p>
-                        <img src="${item.foto}" alt="Foto ${item.nama}" class="mt-4 rounded-lg shadow-lg w-32 h-32 object-cover mx-auto">
-                    </div>
-
-                    <div class="w-1/12 relative">
-                        <div class="highlight-year ${isLeft ? 'left' : 'right'}">
-                            <span>${getStartYear(item.tahun).toString().slice(0, 2)}</span>
-                            <span>${getStartYear(item.tahun).toString().slice(2)}</span>
-                        </div>
-                    </div>
-
-                    <div class="w-5/12"></div>
-                </div>
-            `;
-        });
-    </script>
+    // Render data ke elemen timeline
+    const timelineContainer = document.getElementById("timeline");
+    timelineData.forEach(item => {
+      timelineContainer.innerHTML += createTimelineItem(item);
+    });
+  </script>
 </body>
 </html>
