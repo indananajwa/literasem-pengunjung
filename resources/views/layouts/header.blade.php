@@ -1,8 +1,3 @@
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Kota Semarang</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
@@ -14,36 +9,55 @@
       color: #b91c1c; /* Tailwind color red-800 */
     }
   </style>
-</head>
-<body class="bg-white">
-  <header id="header" class="header bg-red-800 text-white fixed w-full p-4 flex items-center z-50">
-    <img alt="Logo Dinas Arsip dan Perpustakaan Kota Semarang" class="mr-4" height="50" src="https://storage.googleapis.com/a1aa/image/msW3ZDDmI5JwMlfvm9V9QqeE9f2pmX03unf1Wpz0q1xG9mLQB.jpg" width="50"/>
-    <h1 class="text-lg font-bold">DINAS ARSIP DAN PERPUSTAKAAN KOTA SEMARANG</h1>
+
+  <header id="header" class="header bg-red-800 text-white fixed w-full p-4 flex justify-between items-center z-50 shadow-md">
+    <!-- Logo dan Judul -->
+    <div class="flex items-center space-x-3">
+      <img alt="Logo Dinas Arsip dan Perpustakaan Kota Semarang" class="w-12" src="/img/logo.png" />
+      <a class="text-sm md:text-lg font-bold leading-tight" href="/">
+        DINAS ARSIP DAN <br> PERPUSTAKAAN KOTA SEMARANG
+      </a>
+    </div>
+
+    <!-- Tombol Burger Menu -->
+    <div class="md:hidden">
+      <button id="menu-toggle" class="text-white focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- Navigasi untuk Desktop -->
+    <nav class="hidden md:flex space-x-8 text-sm font-medium">
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Pemerintahan</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Arsitektur</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Tempat Ibadah</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Budaya</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Tokoh</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Situs Kota Lama</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Makanan</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Pariwisata</a>
+    </nav>
+
+    <!-- Navigasi untuk Mobile -->
+    <nav id="mobile-menu" class="hidden bg-red-800 text-white fixed top-16 left-0 w-full flex flex-col space-y-2 px-4 py-2 z-40">
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Pemerintahan</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Arsitektur</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Tempat Ibadah</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Budaya</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Tokoh</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Situs Kota Lama</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Makanan</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Pariwisata</a>
+    </nav>
+
+    <!-- Tombol Kontak -->
+    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md transition-transform transform hover:scale-105 hidden md:block">
+      Contact
+    </button>
   </header>
-  <section class="pt-20 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
-    <div class="flex">
-      <img alt="Image of a traditional building in Semarang" class="w-1/3 h-64 object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/r5XZFCHieTTlRq3B5cWkyVkeqZ0VMY42Z3tetwhmGDVf8mLQB.jpg" width="400"/>
-      <img alt="Image of a monument in Semarang" class="w-1/3 h-64 object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/Ss8PD1fgxNyMJy2S7RDCreb8bD4rIoIxt1W9FeJlGdDmemLQB.jpg" width="400"/>
-      <img alt="Image of a government building in Semarang" class="w-1/3 h-64 object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/nqVu3c2GsFLNEpB7Y1KxESBluCeMt4IfmXNVkrRE1M0Vv5CUA.jpg" width="400"/>
-    </div>
-    <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center p-4">
-      <h2 class="text-4xl font-bold">YUK KENALAN SAMA KOTA SEMARANG</h2>
-      <p class="text-lg">Kota Semarang adalah Ibu kota Provinsi Jawa Tengah</p>
-    </div>
-  </section>
-  <section class="p-8">
-    <h2 class="text-3xl font-bold text-center text-red-800 mb-4">SEJARAH BERDIRINYA KOTA SEMARANG</h2>
-    <div class="flex flex-col md:flex-row md:space-x-8">
-      <p class="text-justify mb-4 md:mb-0">
-        Sejarah Kota Semarang bermula pada abad ke-8 M sebagai daerah pesisir bernama Pragota, bagian dari Kerajaan Mataram Kuno. Saat itu, daerah ini merupakan pelabuhan penting dengan gugusan pulau kecil yang kini menjadi daratan akibat pengendapan. Pelabuhan ini diduga berada di sekitar Pasar Bulu hingga Pelabuhan Simongan, tempat Laksamana Cheng Ho bersandar pada 1405 M dan mendirikan Kelenteng Sam Po Kong.
-      </p>
-      <p class="text-justify">
-        Pada abad ke-15, Kerajaan Demak menugaskan Pangeran Made Pandan untuk menyebarkan Islam di Pragota. Nama "Semarang" berasal dari pohon asam yang jarang tumbuh di daerah ini (Asem Arang). Pendiri desa, Kyai Ageng Pandan Arang I, digantikan putranya, Pandan Arang II, yang membawa kemajuan hingga Semarang ditetapkan sebagai kabupaten oleh Sultan Hadiwijaya pada 2 Mei 1547—tanggal yang kini diperingati sebagai Hari Jadi Kota Semarang.
-      </p>
-    </div>
-  </section>
+
   <script>
+    // Menangani scroll untuk menambahkan kelas .scrolled
     window.addEventListener('scroll', function() {
       const header = document.getElementById('header');
       if (window.scrollY > 50) {
@@ -52,6 +66,12 @@
         header.classList.remove('scrolled');
       }
     });
+
+    // Menangani toggle menu mobile
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
   </script>
-</body>
-</html>
+
