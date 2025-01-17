@@ -6,21 +6,28 @@
   <title>Timeline Wali Kota Semarang</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
-    <section>
-        <div class="bg-white text-black py-8">
-            <div class="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
-                <div class="flex flex-col w-full sticky md:top-36 lg:w-1/4 mt-2 md:mt-12 px-8">
-                    <p class="ml-2 text-red-300 uppercase tracking-loose">Informasi</p>
-                    <p class="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2"> Daftar Wali Kota dan Wakil Wali Kota Semarang</p>
-                </div>
-                <div class="ml-0 md:ml-12 lg:w-3/4 relative">
-                    <div class="pattern-line"></div>
-                    <div id="timeline"></div>
-                </div>
+<body class="bg-gray-100 font-inter">
+    <!-- Menambahkan judul utama -->
+    <div class="text-center mt-10 mb-8">
+        <h1 class="text-5xl font-bold text-gray-800">Pemerintahan Kota Semarang</h1>
+    </div>
+
+    <div class="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24 space-y-8 md:space-y-0">
+        <!-- Sisi kiri -->
+        <div class="flex flex-col w-full sticky md:top-36 lg:w-2/5 mt-2 md:mt-12 px-8">
+            <p class="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2">Daftar Wali Kota dan Wakil Wali Kota Semarang</p>
+        </div>
+
+        <!-- Sisi kanan timeline -->
+        <div class="ml-12 sm:ml-24 md:ml-34 lg:w-3/5 relative">
+            <div class="relative border-l-4 border-red-800" id="timeline">
+                <!-- Elemen timeline akan diisi secara dinamis oleh JavaScript -->
             </div>
         </div>
-    </section>
+    </div>
+
+  
+
 
   <script>
     // Data Wali Kota dan Wakil Wali Kota
