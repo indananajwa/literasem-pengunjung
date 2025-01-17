@@ -27,14 +27,14 @@
 
     <!-- Navigasi -->
     <nav class="hidden md:flex space-x-8 text-sm font-medium">
-      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Pemerintahan</a>
-      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Arsitektur</a>
-      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Tempat Ibadah</a>
-      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Budaya</a>
-      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Tokoh</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="/pemerintahan">Pemerintahan</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="/arsitektur">Arsitektur</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="/tempatibadah">Tempat Ibadah</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="/budaya">Budaya</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="/tokoh">Tokoh</a>
       <a class="hover:text-gray-300 transition-colors duration-200" href="/situs-kota-lama">Situs Kota Lama</a>
-      <a class="hover:text-gray-300 transition-colors duration-200" href="/maam">Makanan</a>
-      <a class="hover:text-gray-300 transition-colors duration-200" href="#">Pariwisata</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="/makan">Makanan</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="/wisatasmg">Pariwisata</a>
     </nav>
 
     <!-- Tombol Kontak -->
@@ -42,15 +42,3 @@
       Contact
     </button>
   </header>
-  <script>
-    window.addEventListener('scroll', function() {
-      const header = document.getElementById('header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-  </script>
-</body>
-</html>
