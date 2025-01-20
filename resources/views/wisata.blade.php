@@ -21,7 +21,7 @@
     <!-- Include Header -->
     @include('layouts.header')
 
-    <div id="hero-section" class="relative h-screen bg-cover bg-center z-10" style="background-image: url('https://via.placeholder.com/1920x1080');">
+    <div id="hero-section" class="relative h-screen bg-cover bg-center z-10" style="background-image: url('cover/cover_pariwisata.jpg');">
         <!-- Overlay hitam transparan -->
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
 

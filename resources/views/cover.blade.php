@@ -10,7 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
         }
         .hover-effect {
             position: relative;
@@ -41,39 +43,113 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body>
     <!-- Include Header -->
     @include('layouts.header')
 
     <!-- Hero Section -->
-    <section id="hero" class="pt-10 relative opacity-0 translate-y-10 transition-all duration-700">
-        <main class="flex flex-col items-center text-center mt-10">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white opacity-100"></div>
-                <div class="flex">
-                <img alt="Lawang Sewu" class="w-1/4 h-80 object-cover" height="300" src="/lawang sewu.jpg" width="300"/>
-                <img alt="Sam Poo Kong" class="w-1/4 h-80 object-cover" height="300" src="/sampookong.jpg" width="300"/>
-                <img alt="Tugu Muda" class="w-1/4 h-80 object-cover" height="300" src="/tugu muda.jpg" width="300"/>
-                <img alt="Balaikota" class="w-1/4 h-80 object-cover" height="300" src="/balaikota.jpg" width="300"/>
-            </div>
-            <!-- <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center p-4">
-                <h2 class="text-4xl font-bold">YUK KENALAN SAMA KOTA SEMARANG</h2>
-                <p class="text-lg">Kota Semarang adalah Ibu kota Provinsi Jawa Tengah</p>
-            </div> -->
-            <div class = "absolute inset-0 flex flex-col justify-center items-center text-white text-center p-4">
-                <h1 class="text-5xl font-bold">
-                    Yuk Kenalan Sama<br/>
-                    Kota Semarang!
-                </h1>
-                <p class="text-gray-400 mt-4">
-                    Find a variety of properties that suit you very easily,<br/>
-                    forget all difficulties in finding a residence for you
-                </p>
-            </div>
-        </main>
-    </section>
+    <div id="hero-section" class="relative h-screen bg-cover bg-center z-10" style="background-image: url('sampul.jpg');">
+        <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white"
+            style="padding-bottom: 8rem;"> <!-- Tambahkan padding-bottom -->
+            <h1 class="text-5xl font-bold mb-4">
+                <span class="text-5xl font-bold text-white-800">ASEM</span><br>
+                <span class="text-white-800 font-normal text-3xl">Mengenal Arsip Kota Semarang</span>
+                <div class="border-t-2 border-white-800 w-16 mx-auto my-4"></div>
+            </h1>
+        </div>
+    </div>
+
 
     <!-- Sejarah Section -->
-    <section id="sejarah" class="p-8 opacity-0 translate-y-10 transition-all duration-700">
+    <div class="min-h-screen relative overflow-hidden">
+        <!-- Envelope Background -->
+        <div class="absolute inset-0">
+            <div class="envelope-bg w-full h-full bg-gradient-to-br batik-pattern">
+                <div class="envelope-fold"></div>
+            </div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="relative z-10 container mx-auto px-4 py-8">
+            <!-- Slides Container -->
+            <div class="max-w-5xl mx-auto">
+                <!-- Slide 1 -->
+                <div id="slide1" class="slide bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 mb-8 transform transition-all duration-500">
+                    <!-- Video Container 1 -->
+                    <div class="video-container mb-6 shadow-lg rounded-xl overflow-hidden">
+                        <iframe 
+                            src="https://www.youtube.com/embed/MKKiWfET3Fs" 
+                            title="IISMA Video 1"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <!-- Video Description -->
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Introduction to IISMA</h2>
+                        <p class="text-gray-600">Learn about our international student mobility program</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div id="slide2" class="slide bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 mb-8">
+                    <!-- Video Container 2 -->
+                    <div class="video-container mb-6 shadow-lg rounded-xl overflow-hidden">
+                        <iframe 
+                            src="https://www.youtube.com/embed/pSltSPRWkXc" 
+                            title="IISMA Video 2"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <!-- Video Description -->
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">IISMA Experience</h2>
+                        <p class="text-gray-600">Discover student stories and achievements</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="flex justify-center space-x-4">
+                    <button onclick="showSlide(1)" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 shadow-lg">
+                        Video 1
+                    </button>
+                    <button onclick="showSlide(2)" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 shadow-lg">
+                        Video 2
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const heroContent = document.getElementById('hero-content');
+        const videoContainer = document.getElementById('video-container');
+        const video = document.getElementById('video');
+
+        video.addEventListener('play', () => {
+            heroContent.classList.remove('visible-opacity');
+            heroContent.classList.add('hidden-opacity');
+            videoContainer.classList.remove('hidden-opacity');
+            videoContainer.classList.add('visible-opacity');
+        });
+
+        video.addEventListener('pause', () => {
+            heroContent.classList.remove('hidden-opacity');
+            heroContent.classList.add('visible-opacity');
+        });
+
+        video.addEventListener('ended', () => {
+            heroContent.classList.remove('hidden-opacity');
+            heroContent.classList.add('visible-opacity');
+        });
+    </script>
+
+    <section id="sejarah" class="opacity-0 translate-y-10 transition-all duration-700">
         <h2 class="text-3xl font-bold text-center text-red-800 mb-4">Jejak Sejarah Kota Semarang</h2>
         <div class="border-t-2 border-red-800 w-16 mx-auto my-4"></div>
         <div class="container mx-auto px-6 py-8">
@@ -94,32 +170,28 @@
                 </div>
 
                 <!-- Artikel dengan gambar di bawah -->
-                <div>
+
                         <p class="text-gray-700 text-justify mt-4 leading-relaxed">
                             Sejarah Kota Semarang bermula pada <strong>abad ke-8 M</strong> sebagai daerah pesisir bernama <strong>Pragota</strong>, bagian dari Kerajaan Mataram Kuno. Saat itu, daerah ini merupakan pelabuhan penting dengan gugusan pulau kecil yang kini menjadi daratan akibat pengendapan. Pelabuhan ini diduga berada di sekitar Pasar Bulu hingga Pelabuhan Simongan, tempat Laksamana Cheng Ho bersandar pada 1405 M dan mendirikan Kelenteng Sam Po Kong.</br></br>
                             Pada abad ke-15, Kerajaan Demak menugaskan Pangeran Made Pandan untuk menyebarkan Islam di Pragota. Nama "Semarang" berasal dari pohon asam yang jarang tumbuh di daerah ini (Asem Arang). Pendiri desa, Kyai Ageng Pandan Arang I, digantikan putranya, Pandan Arang II, yang membawa kemajuan hingga Semarang ditetapkan sebagai kabupaten oleh Sultan Hadiwijaya pada 2 Mei 1547—tanggal yang kini diperingati sebagai Hari Jadi Kota Semarang.</br></br>
                             Pada tahun 1678, Amangkurat II menyerahkan Semarang kepada VOC sebagai pembayaran utang. Pada 1705, Pakubuwono I menyerahkan Semarang kepada VOC, menjadikannya kota kolonial hingga dibentuk Gemeente pada 1906. Pemerintahan ini berakhir pada 1942 saat pendudukan Jepang, yang membentuk pemerintahan lokal dengan kepala militer (Shico).</br></br>
                             Setelah kemerdekaan, Semarang mengalami Pertempuran Lima Hari (15–20 Oktober 1945) melawan Jepang. Pada 1946, Inggris menyerahkan Semarang kepada Belanda, yang menduduki kota hingga 1950. Pemerintahan kota selama pendudukan dijalankan di daerah pengungsian, hingga pada 1 April 1950, pemerintahan kota diserahkan kembali kepada pemerintah Republik Indonesia.
                         </p>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Semarang Masa Lalu Masa Kini dan Masa Semarang -->
-    <main class="container mx-auto mt-8 px-6 transition-all duration-700">
-        <section class="text-center transition-all duration-700">
-            <h2 class="text-blue-600 text-sm font-semibold">
-                DISCOVER
-            </h2>
-            <h1 class="text-3xl font-bold mt-2">
+    <main class="container mx-auto p-8 transition-all duration-700">
+        <section class="text-center transition-all duration-700" >
+            <h1 class="text-3xl font-bold mt-2 text-red-800">
                 Semarang dari Masa ke Masa
             </h1>
             <p class="text-gray-600 mt-2">
                 Jelajahi sejarah dan transformasi Kota Semarang dari masa lalu, masa kini, hingga masa depan.
             </p>
             <div class="mt-4 flex justify-center space-x-4">
-                <button id="btnPastPresent" class="bg-blue-500 text-white px-4 py-2 rounded" onclick="showSection('past-present')">
+                <button id="btnPastPresent" class="bg-gray-200 text-gray-700 px-4 py-2 rounded" onclick="showSection('past-present')">
                     Semarang Dulu dan Kini
                 </button>
                 <button id="btnFuture" class="bg-gray-200 text-gray-700 px-4 py-2 rounded" onclick="showSection('future')">
@@ -278,32 +350,115 @@
                 </div>
             </div>
         </section>
+    </main>
 
         <!-- Pemerintahan -->
         @include('pemerintahan')
 
         <!-- Situs Kota Lama -->
         <section id="situs-kota-lama" class="mt-16 opacity-0 translate-y-10 transition-all duration-700">
-            <div class="container mx-auto p-4">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="w-full lg:w-2/3">
-                        <img alt="Map of Kota Lama Surabaya with various landmarks marked" class="w-full" height="600" src="/SKL/situskotalama.png" width="800"/>
-                    </div>
-                    <div class="w-full lg:w-1/3 lg:pl-8 mt-4 lg:mt-0">
-                        <h1 class="text-4xl font-bold text-gray-800">
-                            Kota Lama
-                        </h1>
-                        <p class="mt-4 text-gray-600 text-justify">
-                            Kota Lama Semarang adalah destinasi ideal bagi para penggemar wisata sejarah dan fotografi arsitektur. Kawasan ini memiliki berbagai landmark menakjubkan dan bangunan peninggalan Belanda yang terpelihara dengan baik. Pada abad ke-19 hingga ke-20, Kota Lama merupakan pusat perdagangan penting, dan untuk melindungi warga serta wilayahnya, dibangunlah benteng Vijfhoek. Jalan utama di dalam benteng tersebut diberi nama Heerenstraat, yang kini dikenal sebagai Jalan Letjen Soeprapto. Kota Lama dijuluki "Little Netherland" karena lanskapnya yang terpisah dan mirip dengan kota-kota di Eropa, serta kanal-kanal air yang mengelilinginya. Arsitektur bangunan di kawasan ini mengusung gaya Eropa dengan pintu utama dan jendela besar, elemen dekoratif, dan langit-langit tinggi.                 </p>
-                        <button class="mt-6 bg-green-600 text-white px-4 py-2 rounded-full flex items-center" onclick="window.location.href='{{ route('situs-kota-lama') }}'">
-                            More Information
-                            <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-                </div>
+    <div class="container mx-auto p-4">
+        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8">
+            <!-- Gambar -->
+            <div class="w-full lg:w-2/3 flex justify-center">
+                <img 
+                    src="/SKL/situskotalama.png" 
+                    alt="Map of Kota Lama Semarang with various landmarks marked" 
+                    class="w-full h-auto max-h-[500px] rounded-lg shadow-lg object-cover"
+                />
             </div>
-        </section>
-    </main>
+
+            <!-- Konten -->
+            <div class="w-full lg:w-1/3 flex flex-col justify-between min-h-full">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                    Kota Lama
+                </h1>
+                <p id="description" class="text-gray-600 text-justify">
+                    Kota Lama Semarang adalah destinasi ideal bagi para penggemar wisata sejarah dan fotografi arsitektur. Kawasan ini memiliki berbagai landmark menakjubkan dan bangunan peninggalan Belanda yang terpelihara dengan baik. Pada abad ke-19 hingga ke-20, Kota Lama merupakan pusat perdagangan penting, dan untuk melindungi warga serta wilayahnya, dibangunlah benteng Vijfhoek. Jalan utama di dalam benteng tersebut diberi nama Heerenstraat, yang kini dikenal sebagai Jalan Letjen Soeprapto. Kota Lama dijuluki "Little Netherland" karena lanskapnya yang terpisah dan mirip dengan kota-kota di Eropa, serta kanal-kanal air yang mengelilinginya. Arsitektur bangunan di kawasan ini mengusung gaya Eropa dengan pintu utama dan jendela besar, elemen dekoratif, dan langit-langit tinggi.
+                </p>
+                <div class="mt-2">
+                    <button 
+                        id="readMoreBtn" 
+                        class="text-red-800 underline text-sm"
+                        onclick="toggleReadMore()"
+                    >
+                        Read More
+                    </button>
+                </div>
+                <button 
+                    class="mt-6 bg-red-800 text-white px-4 py-2 rounded-full flex items-center self-start" 
+                    onclick="window.location.href='{{ route('situs-kota-lama') }}'"
+                >
+                    More Information
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="icon-gallery" class="mt-16 py-10 bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Our Icons</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 justify-items-center">
+            <!-- Foto 1 -->
+            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+                <img src="/icons/icon1.png" alt="Icon 1" class="w-12 h-12">
+            </div>
+            <!-- Foto 2 -->
+            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+                <img src="/icons/icon2.png" alt="Icon 2" class="w-12 h-12">
+            </div>
+            <!-- Foto 3 -->
+            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+                <img src="/icons/icon3.png" alt="Icon 3" class="w-12 h-12">
+            </div>
+            <!-- Foto 4 -->
+            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+                <img src="/icons/icon4.png" alt="Icon 4" class="w-12 h-12">
+            </div>
+            <!-- Foto 5 -->
+            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+                <img src="/icons/icon5.png" alt="Icon 5" class="w-12 h-12">
+            </div>
+            <!-- Foto 6 -->
+            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+                <img src="/icons/icon6.png" alt="Icon 6" class="w-12 h-12">
+            </div>
+            <!-- Foto 7 -->
+            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+                <img src="/icons/icon7.png" alt="Icon 7" class="w-12 h-12">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Include Header -->
+@include('layouts.contact')
+
+
+
+<script>
+    const description = document.getElementById('description');
+    const readMoreBtn = document.getElementById('readMoreBtn');
+    const fullText = description.textContent;
+    const truncatedText = fullText.substring(0, 150) + '...';
+
+    // Initially set the truncated text
+    description.textContent = truncatedText;
+
+    function toggleReadMore() {
+        if (description.textContent === truncatedText) {
+            description.textContent = fullText;
+            readMoreBtn.textContent = 'Read Less';
+        } else {
+            description.textContent = truncatedText;
+            readMoreBtn.textContent = 'Read More';
+        }
+    }
+</script>
+
+
     
 
     <script>

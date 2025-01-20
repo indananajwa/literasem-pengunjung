@@ -23,7 +23,7 @@
     <div
       id="hero-section"
       class="relative h-screen bg-cover bg-center"
-      style="background-image: url('https://via.placeholder.com/1920x1080');"
+      style="background-image: url('cover/cover_ibadah.jpg');"
     >
       <div class="absolute inset-0 bg-black bg-opacity-50"></div>
       <div

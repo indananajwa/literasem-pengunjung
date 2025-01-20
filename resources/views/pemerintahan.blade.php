@@ -9,9 +9,8 @@
 <body class="bg-gray-100 font-inter">
     <!-- Menambahkan judul utama -->
     <div class="text-center mt-10 mb-8">
-        <h1 class="text-5xl font-bold text-gray-800">Pemerintahan Kota Semarang</h1>
-    </div>
-
+      <h2 class="text-3xl font-bold text-center text-red-800 mb-4">Pemerintahan Kota Semarang</h2>
+      <div class="border-t-2 border-red-800 w-16 mx-auto my-4"></div>    </div>
     <div class="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24 space-y-8 md:space-y-0">
         <!-- Sisi kiri -->
         <div class="flex flex-col w-full sticky md:top-36 lg:w-2/5 mt-2 md:mt-12 px-8">
@@ -162,14 +161,14 @@
             <!-- Gambar dan Nama Wali Kota -->
             <div class="flex flex-col items-center">
               <img src="${data.fotoWalikota}" alt="Foto Wali Kota" class="w-28 h-28 rounded-full object-cover">
-              <h2 class="text-lg font-bold text-center text-teal-600 mt-2">${data.namaWalikota}</h2>
+              <h2 class="text-lg font-bold text-center text-red-800 mt-2">${data.namaWalikota}</h2>
             </div>
 
             <!-- Jika ada Wakil Wali Kota -->
             ${hasWakil ? `
               <div class="flex flex-col items-center">
                 <img src="${data.fotoWakilWalikota}" alt="Foto Wakil Wali Kota" class="w-28 h-28 rounded-full object-cover">
-                <h3 class="text-lg font-bold text-center text-teal-600 mt-2">${data.namaWakilWalikota}</h3>
+                <h3 class="text-lg font-bold text-center text-red-800 mt-2">${data.namaWakilWalikota}</h3>
               </div>
             ` : ``}
           </div>

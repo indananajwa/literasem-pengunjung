@@ -43,11 +43,11 @@
     @include('layouts.header')
 
     <!-- Hero Section -->
-    <div id="hero-section" class="relative h-screen bg-cover bg-center z-10" style="background-image: url('https://via.placeholder.com/1920x1080');">
+    <div id="hero-section" class="relative h-screen bg-cover bg-center z-10" style="background-image: url('cover/cover_budaya.png');">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
             <h1 class="text-5xl font-bold mb-4">
-                <span class="text-red-800">Jelajah Budaya Semarang</span><br>
+                <span class="text-red-800 shadow-lg">Jelajah Budaya Semarang</span><br>
                 <span class="text-white-800 font-normal text-3xl">Keindahan yang Tak Lekang oleh Waktu</span>
             </h1>
             <button class="bg-red-800 text-white px-6 py-3 rounded-full shadow-lg flex items-center hover:bg-yellow-600" onclick="scrollToMenuSection()">
