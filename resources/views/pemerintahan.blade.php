@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,10 +6,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-inter">
+  
     <!-- Menambahkan judul utama -->
-    <div class="text-center mt-10 mb-8">
+    <div class="text-center mt-10 mb-8" >
       <h2 class="text-3xl font-bold text-center text-red-800 mb-4">Pemerintahan Kota Semarang</h2>
-      <div class="border-t-2 border-red-800 w-16 mx-auto my-4"></div>    </div>
+      <div class="border-t-2 border-red-800 w-16 mx-auto my-4"></div>
+    </div>
     <div class="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24 space-y-8 md:space-y-0">
         <!-- Sisi kiri -->
         <div class="flex flex-col w-full sticky md:top-36 lg:w-2/5 mt-2 md:mt-12 px-8">
@@ -25,12 +26,8 @@
         </div>
     </div>
 
-  
-
-
   <script>
     // Data Wali Kota dan Wakil Wali Kota
-
     const timelineData = [
       {
         periode: "1945 - 1949",
@@ -139,11 +136,9 @@
       }
     ];
 
-
-
-    // Fungsi untuk membuat elemen HTML untuk setiap item di timeline
     const createTimelineItem = (data) => {
       const hasWakil = data.namaWakilWalikota !== null;
+      const isSpecialWalikota = data.namaWalikota === "Mr. Moch.lchsan"; // Kondisi untuk menambahkan link
       const tahunAwal = data.periode.split(" - ")[0]; // Ambil tahun awal dari periode
 
       return `
@@ -157,11 +152,17 @@
           <div class="text-black text-xl font-semibold">Periode Tahun ${data.periode}</div>
 
           <!-- Paket Wali Kota dan Wakil Wali Kota (Horizontal) -->
-          <div class="flex items-center space-x-6">
+          <div class="flex items-center justify-between space-x-6">
             <!-- Gambar dan Nama Wali Kota -->
             <div class="flex flex-col items-center">
               <img src="${data.fotoWalikota}" alt="Foto Wali Kota" class="w-28 h-28 rounded-full object-cover">
-              <h2 class="text-lg font-bold text-center text-red-800 mt-2">${data.namaWalikota}</h2>
+              <div class="flex items-center space-x-2 mt-2"> <!-- Flex untuk nama dan link di samping -->
+                <h2 class="text-lg font-bold text-center text-red-800">${data.namaWalikota}</h2>
+                <!-- Jika Wali Kota adalah Mr. Moch.lchsan, tampilkan link di samping nama -->
+                ${isSpecialWalikota ? `
+                  <a href="https://link-anda.com" class="text-blue-600 hover:underline text-sm">View Sertifikat</a>
+                ` : ``}
+              </div>
             </div>
 
             <!-- Jika ada Wakil Wali Kota -->
@@ -173,9 +174,7 @@
             ` : ``}
           </div>
         </div>
-
-
-        </div>
+      </div>
       `;
     };
 

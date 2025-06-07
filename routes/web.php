@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\PemerintahController;
 use App\Http\Controllers\ArsitekturController;
 use App\Http\Controllers\MakananController;
@@ -21,7 +24,7 @@ Route::resource('pariwisata', PariwisataController::class);
 
 Route::get('/', function () {
     return view('cover');
-});
+})->name('cover');
 
 Route::get('/situs-kota-lama', function () {
     return view('situs-kota-lama');
@@ -35,13 +38,9 @@ Route::get('/situskotalama', function () {
     return view('skl');
 })->name('situskotalama');
 
-Route::get('/wisatasmg', function () {
-    return view('wisata');
-})->name('wisatasmg');
-
-Route::get('/pemerintahan', function () {
-    return view('pemerintahan');
-});
+Route::get('/wisata', function () {
+    return view('pariwisata');
+})->name('wisata');
 
 Route::get('/arsitektur', function () {
     return view('arsitektur');

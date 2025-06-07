@@ -69,11 +69,24 @@
     <!-- Include Header -->
     @include('layouts.header')
 
+    <!-- Hero Section -->
     <div id="hero-section" class="relative h-screen bg-cover bg-center z-10" style="background-image: url('cover/cover_kotalama.jpg');">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white visible-opacity">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Discover your right places with us</h1>
+        <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
+            <h1 class="text-5xl font-bold mb-4">
+                <span class="text-white shadow-lg">Situs Kota Lama Semarang</span><br>
+                <span class="text-white-800 font-normal text-3xl">Menghidupkan Kembali Warisan Sejarah Kota Semarang</span>
+            </h1>
+            <button class="bg-red-800 text-white px-6 py-3 rounded-full shadow-lg flex items-center hover:bg-yellow-600" onclick="scrollToMenuSection()">
+                View Detail
+            </button>
         </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-lg px-6 py-4 flex space-x-4 items-center z-30">
+            <input id="search-bar" type="text" placeholder="Search by name or description..." class="flex-1 border-none bg-gray-100 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" style="width: 300px;" oninput="handleSearch()" />
+            <button class="bg-red-800 text-white font-bold rounded-md px-6 py-2 hover:bg-yellow-600">Search</button>
+        </div>
+    </div>
+
         <div id="video-container" class="relative z-30 flex items-center justify-center hidden-opacity">
             <iframe 
                 id="video" 
@@ -112,8 +125,8 @@
                     <!-- Video Container 1 -->
                     <div class="video-container mb-6 shadow-lg rounded-xl overflow-hidden">
                         <iframe 
-                            src="https://www.youtube.com/embed/MKKiWfET3Fs" 
-                            title="IISMA Video 1"
+                            src="https://www.youtube.com/embed/khNkocgfiN0" 
+                            title="Revitalisasi Situs Kota Lama"
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
@@ -122,8 +135,8 @@
 
                     <!-- Video Description -->
                     <div class="text-center mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Introduction to IISMA</h2>
-                        <p class="text-gray-600">Learn about our international student mobility program</p>
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Revitalisasi Kota Lama Semarang</h2>
+                        <p class="text-gray-600">Upaya pelestarian Kota Lama Semarang agar tetap menjadi ikon bersejarah yang menarik dan berdaya guna.</p>
                     </div>
                 </div>
 
@@ -132,8 +145,8 @@
                     <!-- Video Container 2 -->
                     <div class="video-container mb-6 shadow-lg rounded-xl overflow-hidden">
                         <iframe 
-                            src="https://drive.google.com/file/d/1aofV_x3RC7MVF4LECJ5F_HpkZ-vjK4Xt/view" 
-                            title="IISMA Video 2"
+                            src="https://www.youtube.com/embed/WhW0GBZiRWo " 
+                            title="Mengenal Kota Lama Semarang"
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
@@ -142,8 +155,8 @@
 
                     <!-- Video Description -->
                     <div class="text-center mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">IISMA Experience</h2>
-                        <p class="text-gray-600">Discover student stories and achievements</p>
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Mengenal Kota Lama Semarang</h2>
+                        <p class="text-gray-600">Mengungkap sejarah dan pesona Kota Lama Semarang, sebuah kawasan bersejarah yang penuh cerita dan keindahan.</p>
                     </div>
                 </div>
 
@@ -211,28 +224,33 @@
                 image: "/SKL/Gedung-Schouwburg.jpg",
             },
             {
-                name: "Gedung Schouwburg (Gedung Marabunta)",
-                description: "Dibangun pada tahun 1870, dulunya menjadi pusat pertunjukan seni dan budaya bagi warga Semarang. Namun, pada tahun 1994, bangunan ini roboh dan digantikan oleh Gedung Marabunta yang didirikan pada tahun 1997 di lokasi yang sama. Nama \"Marabunta,\" yang berarti \"semut raksasa\" dalam bahasa Jawa, kini dikenal sebagai destinasi wisata dan cagar budaya. Selain itu, beberapa bagian gedung dimanfaatkan sebagai kafe, restoran, dan toko.",
+                name: "De Koloniale Bank",
+                description: "Koloniale Bank, yang didirikan di Amsterdam pada tahun 1881, bertujuan mendukung keuangan para pengusaha perkebunan di Hindia Belanda. Bank ini membuka cabang di Semarang pada Juni 1883, namun harus menghentikan operasinya pada Januari 1935 karena dampak krisis ekonomi.",
                 rating: 5.0,
-                image: "/SKL/Gedung-Schouwburg.jpg",
+                image: "/SKL/De-Koloniale-Bank-120.jpg",
             },
             {
-                name: "Gedung Schouwburg (Gedung Marabunta)",
-                description: "Dibangun pada tahun 1870, dulunya menjadi pusat pertunjukan seni dan budaya bagi warga Semarang. Namun, pada tahun 1994, bangunan ini roboh dan digantikan oleh Gedung Marabunta yang didirikan pada tahun 1997 di lokasi yang sama. Nama \"Marabunta,\" yang berarti \"semut raksasa\" dalam bahasa Jawa, kini dikenal sebagai destinasi wisata dan cagar budaya. Selain itu, beberapa bagian gedung dimanfaatkan sebagai kafe, restoran, dan toko.",
+                name: "Kantor Pos Semarang",
+                description: "Saat ini, Kantor Pos Besar Semarang tetap beroperasi dan melayani berbagai kebutuhan masyarakat. Sementara itu, bekas Kantor Gubernur kini berfungsi sebagai Gedung Keuangan Negara Semarang I, yang menjadi kantor wilayah Direktorat Jenderal Perbendaharaan (DJPb) Provinsi Jawa Tengah.",
                 rating: 5.0,
-                image: "/SKL/Gedung-Schouwburg.jpg",
+                image: "/SKL/Kantor-Pos-127.tiff",
             },
             {
-                name: "Gedung Schouwburg (Gedung Marabunta)",
-                description: "Dibangun pada tahun 1870, dulunya menjadi pusat pertunjukan seni dan budaya bagi warga Semarang. Namun, pada tahun 1994, bangunan ini roboh dan digantikan oleh Gedung Marabunta yang didirikan pada tahun 1997 di lokasi yang sama. Nama \"Marabunta,\" yang berarti \"semut raksasa\" dalam bahasa Jawa, kini dikenal sebagai destinasi wisata dan cagar budaya. Selain itu, beberapa bagian gedung dimanfaatkan sebagai kafe, restoran, dan toko.",
+                name: "Taman Srigunting",
+                description: "Taman Srigunting, dahulu dikenal sebagai Paradeplein, dibangun pada era kolonial Belanda sekitar 1690-an sebagai tempat latihan militer tentara VOC. Seiring waktu, fungsinya berubah, dan pada akhir 1970-an hingga awal 1980-an, taman ini dibangun ulang, meski belum langsung dibuka untuk umum. Kini, taman ini menjadi saksi perkembangan Kota Semarang dari masa kolonial hingga modern.",
                 rating: 5.0,
-                image: "/SKL/Gedung-Schouwburg.jpg",
+                image: "/SKL/Taman-Srigunting-1920.tiff",
             },
             {
-                name: "Gedung Schouwburg (Gedung Marabunta)",
-                description: "Dibangun pada tahun 1870, dulunya menjadi pusat pertunjukan seni dan budaya bagi warga Semarang. Namun, pada tahun 1994, bangunan ini roboh dan digantikan oleh Gedung Marabunta yang didirikan pada tahun 1997 di lokasi yang sama. Nama \"Marabunta,\" yang berarti \"semut raksasa\" dalam bahasa Jawa, kini dikenal sebagai destinasi wisata dan cagar budaya. Selain itu, beberapa bagian gedung dimanfaatkan sebagai kafe, restoran, dan toko.",
+                name: "Gedung Asuransi Jiwasraya",
+                description: "Gedung Jiwasraya, yang kini menjadi kantor PT Asuransi Jiwasraya (Persero) Wilayah Semarang, dulunya adalah Kantor Nillmij van 1859, perusahaan asuransi jiwa Belanda yang beroperasi di Hindia Belanda sejak 1859. Nillmij mengelola cabang di Semarang setelah membuka kantor pertama di Batavia pada 1909. Gedung ini terletak di kawasan Kota Lama Semarang, yang dikenal dengan peninggalan kolonial Belanda dan menjadi daya tarik wisata budaya.",
                 rating: 5.0,
-                image: "/SKL/Gedung-Schouwburg.jpg",
+                image: "/SKL/Gedung-Asuransi-Jiwasraya.jpg",
+            },
+            {   name: "Pecinan Semarang",
+                description: "Terbentuknya wilayah Pecinan Semarang berkaitan dengan peristiwa pemberontakan masyarakat Tionghoa pada masa kolonial yang bermula di Batavia yang saat ini Jakarta pada tahun 1740. Dampak dari pemberontakan tersebut banyak masyarakat Tionghoa yang dibawa Belanda ke Semarang. Mulanya, masyarakat Tionghoa berada di daerah Simongan sekitar kelenteng Sam Po Kong. Kemudian oleh Belanda dipindahkan ke pusat kota untuk menghindari meluasnya dampak pemberontakan masyarakat Cina & agar pemerintahan Belanda dapat mengawasi aktivitas orang orang Tionghoa di Semarang.",
+                rating: 5.0,
+                image: "/SKL/Pecinan-Semarang.jpg",
             },
             // Add other data objects here...
         ];
@@ -253,10 +271,16 @@
                 const foodItem = document.createElement("div");
                 foodItem.className = "bg-white p-6 rounded-lg shadow flex items-center hover-box";
                 foodItem.innerHTML = `
-                    <img alt="${food.name}" class="w-48 h-48 object-cover rounded-lg mr-4" src="${food.image}" />
-                    <div class="text-left">
-                        <h3 class="text-lg font-semibold">${food.name}</h3>
-                        <p class="text-gray-600">${food.description}</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-1/3"> <!-- Gambar -->
+                            <img alt="${food.name}" 
+                                class="w-full h-auto object-cover rounded-lg shadow-md border border-gray-300" 
+                                src="${food.image}" />
+                        </div>
+                        <div class="w-2/3 text-left"> <!-- Teks -->
+                            <h3 class="text-2xl mb-2 font-semibold">${food.name}</h3>
+                            <p class="text-gray-600">${food.description}</p>
+                        </div>
                     </div>
                 `;
                 foodList.appendChild(foodItem);

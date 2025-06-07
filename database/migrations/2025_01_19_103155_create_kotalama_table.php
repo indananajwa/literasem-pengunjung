@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('kotalama', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama_ba');
             $table->text('deskripsi');
             $table->string('foto')->nullable();
             $table->timestamps();

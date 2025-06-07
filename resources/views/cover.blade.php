@@ -41,6 +41,41 @@
         .slide-transition {
             transition: opacity 0.5s ease-in-out;
         }
+        .envelope-bg {
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 0 70%);
+        }
+
+        .envelope-fold {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform: translateY(50%);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.75rem;
+        }
+        .hidden-opacity {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
     </style>
 </head>
 <body>
@@ -48,16 +83,28 @@
     @include('layouts.header')
 
     <!-- Hero Section -->
-    <div id="hero-section" class="relative h-screen bg-cover bg-center z-10" style="background-image: url('sampul.jpg');">
-        <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white"
-            style="padding-bottom: 8rem;"> <!-- Tambahkan padding-bottom -->
-            <h1 class="text-5xl font-bold mb-4">
-                <span class="text-5xl font-bold text-white-800">ASEM</span><br>
-                <span class="text-white-800 font-normal text-3xl">Mengenal Arsip Kota Semarang</span>
-                <div class="border-t-2 border-white-800 w-16 mx-auto my-4"></div>
-            </h1>
-        </div>
+  
+
+  <div id="hero-section" class="relative h-screen bg-cover bg-center z-10" style="background-image: url('sampul.jpg');">
+    <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white" style="padding-bottom: 8rem;">
+      <h1 class="text-5xl font-bold mb-2 hero-title">
+        <span class="text-6xl font-bold tracking-widest text-white" style="text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);">
+          LITERASEM
+        </span><br>
+        <span class="font-normal text-3xl text-white" style="text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);">
+          Literasi Arsip Kota Semarang
+        </span>
+        <div class="border-t-2 border-white w-16 mx-auto my-4"></div>
+      </h1>
+      <!-- <p class="text-lg font-light max-w-xl mx-auto leading-relaxed" style="text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);">
+        Selamat datang di LITERASEM, platform yang memperkenalkan sejarah dan warisan budaya Kota Semarang. Jelajahi arsip, temukan cerita, dan pelajari lebih lanjut tentang kota yang kaya akan sejarah ini.
+      </p> -->
     </div>
+</div>
+
+
+
+
 
 
     <!-- Sejarah Section -->
@@ -73,52 +120,33 @@
         <div class="relative z-10 container mx-auto px-4 py-8">
             <!-- Slides Container -->
             <div class="max-w-5xl mx-auto">
-                <!-- Slide 1 -->
-                <div id="slide1" class="slide bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 mb-8 transform transition-all duration-500">
-                    <!-- Video Container 1 -->
-                    <div class="video-container mb-6 shadow-lg rounded-xl overflow-hidden">
-                        <iframe 
-                            src="https://www.youtube.com/embed/MKKiWfET3Fs" 
-                            title="IISMA Video 1"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-
-                    <!-- Video Description -->
-                    <div class="text-center mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Introduction to IISMA</h2>
-                        <p class="text-gray-600">Learn about our international student mobility program</p>
-                    </div>
+                <!-- Video Container -->
+                <div class="video-container mb-6 shadow-lg rounded-xl overflow-hidden">
+                    <iframe id="videoFrame" 
+                        src="https://www.youtube.com/embed/79fpUpJFtXM" 
+                        title="Pertempuran 5 Hari Semarang"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
 
-                <!-- Slide 2 -->
-                <div id="slide2" class="slide bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 mb-8">
-                    <!-- Video Container 2 -->
-                    <div class="video-container mb-6 shadow-lg rounded-xl overflow-hidden">
-                        <iframe 
-                            src="https://www.youtube.com/embed/pSltSPRWkXc" 
-                            title="IISMA Video 2"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-
-                    <!-- Video Description -->
-                    <div class="text-center mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">IISMA Experience</h2>
-                        <p class="text-gray-600">Discover student stories and achievements</p>
-                    </div>
+                <!-- Video Description -->
+                <div class="text-center mb-6">
+                    <h2 id="videoTitle" class="text-2xl font-semibold text-gray-800 mb-2">Pertempuran 5 Hari di Semarang</h2>
+                    <p id="videoDescription" class="text-gray-600">
+                        Mengupas kisah heroik di balik Pertempuran 5 Hari di Semarang, perjuangan rakyat mempertahankan kemerdekaan dari ancaman penjajah. 
+                        Saksikan bagaimana semangat juang para pahlawan tetap dikenang hingga hari ini.
+                    </p>
                 </div>
+
 
                 <!-- Navigation Buttons -->
                 <div class="flex justify-center space-x-4">
-                    <button onclick="showSlide(1)" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 shadow-lg">
+                    <button onclick="changeVideo(1)" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 shadow-lg">
                         Video 1
                     </button>
-                    <button onclick="showSlide(2)" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 shadow-lg">
+                    <button onclick="changeVideo(2)" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 shadow-lg">
                         Video 2
                     </button>
                 </div>
@@ -127,33 +155,34 @@
     </div>
 
     <script>
-        const heroContent = document.getElementById('hero-content');
-        const videoContainer = document.getElementById('video-container');
-        const video = document.getElementById('video');
+        function changeVideo(videoNumber) {
+            const videoFrame = document.getElementById('videoFrame');
+            const videoTitle = document.getElementById('videoTitle');
+            const videoDescription = document.getElementById('videoDescription');
 
-        video.addEventListener('play', () => {
-            heroContent.classList.remove('visible-opacity');
-            heroContent.classList.add('hidden-opacity');
-            videoContainer.classList.remove('hidden-opacity');
-            videoContainer.classList.add('visible-opacity');
-        });
-
-        video.addEventListener('pause', () => {
-            heroContent.classList.remove('hidden-opacity');
-            heroContent.classList.add('visible-opacity');
-        });
-
-        video.addEventListener('ended', () => {
-            heroContent.classList.remove('hidden-opacity');
-            heroContent.classList.add('visible-opacity');
-        });
+            if (videoNumber === 1) {
+                videoFrame.src = "https://www.youtube.com/embed/79fpUpJFtXM";
+                videoTitle.textContent = "Pertempuran 5 Hari Semarang";
+                videoDescription.textContent = "Mengupas kisah heroik di balik Pertempuran 5 Hari di Semarang, perjuangan rakyat mempertahankan kemerdekaan dari ancaman penjajah. Saksikan bagaimana semangat juang para pahlawan tetap dikenang hingga hari ini.";
+            } else if (videoNumber === 2) {
+                videoFrame.src = "https://drive.google.com/file/d/1aofV_x3RC7MVF4LECJ5F_HpkZ-vjK4Xt/view";
+                videoTitle.textContent = "Kota Lama Dinas Arsip dan Perpustakaan Kota Semarang";
+                videoDescription.textContent = "Mengungkap sejarah dan pesona Kota Lama Semarang, sebuah kawasan bersejarah yang penuh cerita dan keindahan.";
+            }
+        }
     </script>
 
-    <section id="sejarah" class="opacity-0 translate-y-10 transition-all duration-700">
-        <h2 class="text-3xl font-bold text-center text-red-800 mb-4">Jejak Sejarah Kota Semarang</h2>
+<section 
+    id="sejarah" 
+    class="opacity-0 translate-y-10 transition-all duration-700 bg-cover bg-center bg-fixed"
+    style="background-image: url('/img/pattern.png');"
+>
+    <div class="bg-white bg-opacity-80 py-8">
+        <h2 class="text-3xl font-bold text-center text-red-800 mb-4">
+            Jejak Sejarah Kota Semarang
+        </h2>
         <div class="border-t-2 border-red-800 w-16 mx-auto my-4"></div>
         <div class="container mx-auto px-6 py-8">
-            <!-- Grid Layout -->
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Artikel dengan gambar di atas -->
                 <div>
@@ -169,17 +198,18 @@
                     </div>
                 </div>
 
-                <!-- Artikel dengan gambar di bawah -->
-
-                        <p class="text-gray-700 text-justify mt-4 leading-relaxed">
-                            Sejarah Kota Semarang bermula pada <strong>abad ke-8 M</strong> sebagai daerah pesisir bernama <strong>Pragota</strong>, bagian dari Kerajaan Mataram Kuno. Saat itu, daerah ini merupakan pelabuhan penting dengan gugusan pulau kecil yang kini menjadi daratan akibat pengendapan. Pelabuhan ini diduga berada di sekitar Pasar Bulu hingga Pelabuhan Simongan, tempat Laksamana Cheng Ho bersandar pada 1405 M dan mendirikan Kelenteng Sam Po Kong.</br></br>
-                            Pada abad ke-15, Kerajaan Demak menugaskan Pangeran Made Pandan untuk menyebarkan Islam di Pragota. Nama "Semarang" berasal dari pohon asam yang jarang tumbuh di daerah ini (Asem Arang). Pendiri desa, Kyai Ageng Pandan Arang I, digantikan putranya, Pandan Arang II, yang membawa kemajuan hingga Semarang ditetapkan sebagai kabupaten oleh Sultan Hadiwijaya pada 2 Mei 1547—tanggal yang kini diperingati sebagai Hari Jadi Kota Semarang.</br></br>
-                            Pada tahun 1678, Amangkurat II menyerahkan Semarang kepada VOC sebagai pembayaran utang. Pada 1705, Pakubuwono I menyerahkan Semarang kepada VOC, menjadikannya kota kolonial hingga dibentuk Gemeente pada 1906. Pemerintahan ini berakhir pada 1942 saat pendudukan Jepang, yang membentuk pemerintahan lokal dengan kepala militer (Shico).</br></br>
-                            Setelah kemerdekaan, Semarang mengalami Pertempuran Lima Hari (15–20 Oktober 1945) melawan Jepang. Pada 1946, Inggris menyerahkan Semarang kepada Belanda, yang menduduki kota hingga 1950. Pemerintahan kota selama pendudukan dijalankan di daerah pengungsian, hingga pada 1 April 1950, pemerintahan kota diserahkan kembali kepada pemerintah Republik Indonesia.
-                        </p>
+                <!-- Artikel dengan teks -->
+                <p class="text-gray-700 text-justify mt-4 leading-relaxed">
+                    Sejarah Kota Semarang bermula pada <strong>abad ke-8 M</strong> sebagai daerah pesisir bernama <strong>Pragota</strong>, bagian dari Kerajaan Mataram Kuno. Saat itu, daerah ini merupakan pelabuhan penting dengan gugusan pulau kecil yang kini menjadi daratan akibat pengendapan. Pelabuhan ini diduga berada di sekitar Pasar Bulu hingga Pelabuhan Simongan, tempat Laksamana Cheng Ho bersandar pada 1405 M dan mendirikan Kelenteng Sam Po Kong.</br></br>
+                    Pada abad ke-15, Kerajaan Demak menugaskan Pangeran Made Pandan untuk menyebarkan Islam di Pragota. Nama "Semarang" berasal dari pohon asam yang jarang tumbuh di daerah ini (Asem Arang). Pendiri desa, Kyai Ageng Pandan Arang I, digantikan putranya, Pandan Arang II, yang membawa kemajuan hingga Semarang ditetapkan sebagai kabupaten oleh Sultan Hadiwijaya pada 2 Mei 1547—tanggal yang kini diperingati sebagai Hari Jadi Kota Semarang.</br></br>
+                    Pada tahun 1678, Amangkurat II menyerahkan Semarang kepada VOC sebagai pembayaran utang. Pada 1705, Pakubuwono I menyerahkan Semarang kepada VOC, menjadikannya kota kolonial hingga dibentuk Gemeente pada 1906. Pemerintahan ini berakhir pada 1942 saat pendudukan Jepang, yang membentuk pemerintahan lokal dengan kepala militer (Shico).</br></br>
+                    Setelah kemerdekaan, Semarang mengalami Pertempuran Lima Hari (15–20 Oktober 1945) melawan Jepang. Pada 1946, Inggris menyerahkan Semarang kepada Belanda, yang menduduki kota hingga 1950. Pemerintahan kota selama pendudukan dijalankan di daerah pengungsian, hingga pada 1 April 1950, pemerintahan kota diserahkan kembali kepada pemerintah Republik Indonesia.
+                </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Semarang Masa Lalu Masa Kini dan Masa Semarang -->
     <main class="container mx-auto p-8 transition-all duration-700">
@@ -208,7 +238,7 @@
                         <h3 class="text-white text-lg font-semibold" id="pastCaption">Past Caption</h3>
                     </div>
                     <!-- Button kiri -->
-                    <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-4 py-2 rounded-full" onclick="prevSlide()">
+                    <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-red-800 text-white px-4 py-2 rounded-full" onclick="prevSlide()">
                         <i class="fas fa-chevron-left"></i>
                     </button>
                 </div>
@@ -218,7 +248,7 @@
                         <h3 class="text-white text-lg font-semibold" id="presentCaption">Present Caption</h3>
                     </div>
                     <!-- Button kanan -->
-                    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-4 py-2 rounded-full" onclick="nextSlide()">
+                    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-red-800 text-white px-4 py-2 rounded-full" onclick="nextSlide()">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
@@ -352,8 +382,11 @@
         </section>
     </main>
 
-        <!-- Pemerintahan -->
+    <!-- Pemerintahan -->
+
+    <div id="pemerintahan" >
         @include('pemerintahan')
+    </div>
 
         <!-- Situs Kota Lama -->
         <section id="situs-kota-lama" class="mt-16 opacity-0 translate-y-10 transition-all duration-700">
@@ -370,7 +403,7 @@
 
             <!-- Konten -->
             <div class="w-full lg:w-1/3 flex flex-col justify-between min-h-full">
-                <h1 class="text-4xl font-bold text-gray-800 mb-4">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">
                     Kota Lama
                 </h1>
                 <p id="description" class="text-gray-600 text-justify">
@@ -399,42 +432,55 @@
 
 <section id="icon-gallery" class="mt-16 py-10 bg-gray-100">
     <div class="container mx-auto p-4">
-        <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Our Icons</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 justify-items-center">
-            <!-- Foto 1 -->
-            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
-                <img src="/icons/icon1.png" alt="Icon 1" class="w-12 h-12">
-            </div>
-            <!-- Foto 2 -->
-            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
-                <img src="/icons/icon2.png" alt="Icon 2" class="w-12 h-12">
-            </div>
-            <!-- Foto 3 -->
-            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
-                <img src="/icons/icon3.png" alt="Icon 3" class="w-12 h-12">
-            </div>
-            <!-- Foto 4 -->
-            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
-                <img src="/icons/icon4.png" alt="Icon 4" class="w-12 h-12">
-            </div>
-            <!-- Foto 5 -->
-            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
-                <img src="/icons/icon5.png" alt="Icon 5" class="w-12 h-12">
-            </div>
-            <!-- Foto 6 -->
-            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
-                <img src="/icons/icon6.png" alt="Icon 6" class="w-12 h-12">
-            </div>
-            <!-- Foto 7 -->
-            <div class="w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
-                <img src="/icons/icon7.png" alt="Icon 7" class="w-12 h-12">
-            </div>
+      <div class="flex flex-wrap justify-center gap-4">
+        <!-- Pemerintahan -->
+        <div class="group relative w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+          <i class="fas fa-landmark text-red-800 text-3xl"></i>
+          <span class="absolute bottom-0 mb-6 px-2 py-1 text-xs text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Pemerintahan</span>
         </div>
+        <!-- Arsitektur -->
+        <div class="group relative w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+          <i class="fas fa-building text-red-800 text-3xl"></i>
+          <span class="absolute bottom-0 mb-6 px-2 py-1 text-xs text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Arsitektur</span>
+        </div>
+        <!-- Tempat Ibadah -->
+        <div class="group relative w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+          <i class="fas fa-place-of-worship text-red-800 text-3xl"></i>
+          <span class="absolute bottom-0 mb-6 px-2 py-1 text-xs text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Tempat Ibadah</span>
+        </div>
+        <!-- Budaya -->
+        <div class="group relative w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+          <i class="fas fa-theater-masks text-red-800 text-3xl"></i>
+          <span class="absolute bottom-0 mb-6 px-2 py-1 text-xs text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Budaya</span>
+        </div>
+        <!-- Tokoh -->
+        <div class="group relative w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+          <i class="fas fa-user-tie text-red-800 text-3xl"></i>
+          <span class="absolute bottom-0 mb-6 px-2 py-1 text-xs text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Tokoh</span>
+        </div>
+        <!-- Situs Kota Lama -->
+        <div class="group relative w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+          <i class="fas fa-archway text-red-800 text-3xl"></i>
+          <span class="absolute bottom-0 mb-6 px-2 py-1 text-xs text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Situs Kota Lama</span>
+        </div>
+        <!-- Makanan -->
+        <div class="group relative w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+          <i class="fas fa-utensils text-red-800 text-3xl"></i>
+          <span class="absolute bottom-0 mb-6 px-2 py-1 text-xs text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Makanan</span>
+        </div>
+        <!-- Pariwisata -->
+        <div class="group relative w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform hover:scale-110 hover:shadow-xl transition-all duration-300">
+          <i class="fas fa-map-marked-alt text-red-800 text-3xl"></i>
+          <span class="absolute bottom-0 mb-6 px-2 py-1 text-xs text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Pariwisata</span>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
+
+
 
 <!-- Include Header -->
-@include('layouts.contact')
+@include('layouts.footer')
 
 
 
@@ -474,15 +520,15 @@
                 pastPresentSection.classList.remove('hidden');
                 futureSection.classList.add('hidden');
                 btnPastPresent.classList.remove('bg-gray-200', 'text-gray-700');
-                btnPastPresent.classList.add('bg-blue-500', 'text-white');
-                btnFuture.classList.remove('bg-blue-500', 'text-white');
+                btnPastPresent.classList.add('bg-red-800', 'text-white');
+                btnFuture.classList.remove('bg-red-800', 'text-white');
                 btnFuture.classList.add('bg-gray-200', 'text-gray-700');
             } else {
                 pastPresentSection.classList.add('hidden');
                 futureSection.classList.remove('hidden');
-                btnFuture.classList.remove('bg-gray-200', 'text-gray-700');
-                btnFuture.classList.add('bg-blue-500', 'text-white');
-                btnPastPresent.classList.remove('bg-blue-500', 'text-white');
+                btnFuture.classList.remove('bg-red-800', 'text-gray-700');
+                btnFuture.classList.add('bg-red-800', 'text-white');
+                btnPastPresent.classList.remove('bg-red-800', 'text-white');
                 btnPastPresent.classList.add('bg-gray-200', 'text-gray-700');
             }
         }

@@ -11,42 +11,21 @@
     @include('layouts.header')
 
     <!-- Hero Section -->
-    <div
-      id="hero-section"
-      class="relative h-screen bg-cover bg-center"
-      style="background-image: url('https://via.placeholder.com/1920x1080');"
-    >
-      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-      <div
-        id="hero-content"
-        class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white"
-      >
-      <h1 class="text-5xl font-bold mb-4">
-          <span class="text-white-800">Tokoh Pahlawan Bersejarah</span><br> 
-          <span class="text-white-800">Semarang</span><br> 
-      </h1>
-
-        <div
-          class="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-lg px-6 py-4 flex items-center space-x-4 w-full max-w-lg"
-        >
-          <input
-            id="search-bar"
-            type="text"
-            placeholder="Search by name or description..."
-            class="flex-1 border-none bg-gray-100 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-            oninput="handleSearch(event)"
-          />
-          <button
-            class="bg-red-800 text-white font-bold rounded-md px-6 py-2 hover:bg-yellow-600"
-            onclick="searchCards()"
-          >
-            Search
-          </button>
+    <div id="hero-section" class="relative h-screen bg-cover bg-center z-10" style="background-image: url('cover/tokoh.png');">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
+            <h1 class="text-5xl font-bold mb-4">
+                <span class="text-white shadow-lg">Jelajah Para Tokoh</span><br>
+                <span class="text-white-800 font-normal text-3xl">Mengenal Sosok-Sosok Berpengaruh dalam Sejarah Semarang</span>
+            </h1>
+            <button class="bg-red-800 text-white px-6 py-3 rounded-full shadow-lg flex items-center hover:bg-yellow-600" onclick="scrollToMenuSection()">
+                View Detail
+            </button>
         </div>
-      </div>
-    </div>
-    <div>
-        <br><p class="mt-4 text-xl font-semibold text-black text-center">Yuk mengenal tokoh bersejarah yang menginspirasi</p><br>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-lg px-6 py-4 flex space-x-4 items-center z-30">
+            <input id="search-bar" type="text" placeholder="Search by name or description..." class="flex-1 border-none bg-gray-100 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" style="width: 300px;" oninput="handleSearch()" />
+            <button class="bg-red-800 text-white font-bold rounded-md px-6 py-2 hover:bg-yellow-600">Search</button>
+        </div>
     </div>
 
 
@@ -136,14 +115,14 @@
             />
             <h2 class="text-xl font-bold mb-4">${profile.name}</h2>
             <p class="text-sm leading-relaxed text-justify">
-              <span class="line-clamp-3" id="desc-${index}">
+              <span class="line-clamp-3 text-xl" id="desc-${index}">
                 ${profile.desc}
               </span>
               <span class="hidden" id="full-desc-${index}">
                 ${profile.more}
               </span>
             </p>
-            <div class="w-full text-left mt-4">
+            <div class="w-full text-left mt-4 text-xl">
               <button
                 id="btn-${index}"
                 onclick="toggleReadMore(${index})"

@@ -24,6 +24,9 @@
       .mobile-menu.active {
         transform: translateX(0);
       }
+      .html {
+      scroll-behavior: smooth;
+  }
     }
   </style>
 </head>
@@ -40,14 +43,14 @@
 
     <!-- Desktop Navigation -->
     <nav class="hidden lg:flex space-x-6 text-sm font-medium">
-      <a class="hover:text-gray-300 transition-colors duration-200" href="/pemerintahan">Pemerintahan</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="{{ url('/') }}#pemerintahan">Pemerintahan</a>
       <a class="hover:text-gray-300 transition-colors duration-200" href="/arsitektur">Arsitektur</a>
       <a class="hover:text-gray-300 transition-colors duration-200" href="/tempatibadah">Tempat Ibadah</a>
       <a class="hover:text-gray-300 transition-colors duration-200" href="/budaya">Budaya</a>
       <a class="hover:text-gray-300 transition-colors duration-200" href="/tokoh">Tokoh</a>
       <a class="hover:text-gray-300 transition-colors duration-200" href="/situs-kota-lama">Situs Kota Lama</a>
       <a class="hover:text-gray-300 transition-colors duration-200" href="/makan">Makanan</a>
-      <a class="hover:text-gray-300 transition-colors duration-200" href="/wisatasmg">Pariwisata</a>
+      <a class="hover:text-gray-300 transition-colors duration-200" href="/wisata">Pariwisata</a>
     </nav>
 
     <!-- Mobile Menu Button -->
@@ -55,10 +58,21 @@
       <i class="fas fa-bars"></i>
     </button>
 
-    <!-- Contact Button (Hidden on Mobile) -->
-    <button class="hidden lg:block bg-red-600 hover:bg-red-800 text-white px-4 py-2 rounded-lg shadow-md transition-transform transform hover:scale-105">
-      Contact
-    </button>
+    <button onclick="scrollToFooter()" 
+    class="hidden lg:block bg-red-600 hover:bg-red-800 text-white px-4 py-2 rounded-lg shadow-md transition-transform transform hover:scale-105">
+    Contact
+</button>
+
+<script>
+    function scrollToFooter() {
+        const footer = document.getElementById('footer');
+        if (footer) {
+            footer.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            window.location.href = "#footer"; // Jika footer belum termuat
+        }
+    }
+</script>
   </header>
 
   <!-- Mobile Navigation Menu -->
