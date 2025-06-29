@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 
-use App\Http\Controllers\PemerintahController;
 use App\Http\Controllers\ArsitekturController;
 use App\Http\Controllers\MakananController;
 use App\Http\Controllers\IbadahController;
@@ -12,9 +11,13 @@ use App\Http\Controllers\TokohController;
 use App\Http\Controllers\KotaLamaController;
 use App\Http\Controllers\BudayaController;
 
+//baru
+use App\Http\Controllers\PemerintahController;
 use App\Http\Controllers\PariwisataController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\FeedbackController;
+
 
 // Route::resource('pemerintah', PemerintahController::class);
 // Route::resource('arsitektur', ArsitekturController::class);
@@ -29,45 +32,45 @@ use App\Http\Controllers\KategoriController;
 //     return view('cover');
 // })->name('cover');
 
-Route::get('/situs-kota-lama', function () {
-    return view('situs-kota-lama');
-})->name('situs-kota-lama');
+// Route::get('/situs-kota-lama', function () {
+//     return view('situs-kota-lama');
+// })->name('situs-kota-lama');
 
-Route::get('/makan', function () {
-    return view('eat');
-})->name('makan');
+// Route::get('/makan', function () {
+//     return view('eat');
+// })->name('makan');
 
-Route::get('/situskotalama', function () {
-    return view('skl');
-})->name('situskotalama');
+// Route::get('/situskotalama', function () {
+//     return view('skl');
+// })->name('situskotalama');
 
-Route::get('/wisata', function () {
-    return view('pariwisata');
-})->name('wisata');
+// Route::get('/wisata', function () {
+//     return view('pariwisata');
+// })->name('wisata');
 
-Route::get('/arsitektur', function () {
-    return view('arsitektur');
-});
-
-Route::get('/tokoh', function () {
-    return view('tokohM');
-});
-
-Route::get('/tempatibadah', function () {
-    return view('tempatibadah');
-});
-
-Route::get('/budaya', function () {
-    return view('budaya');
-});
-
-Route::get('/maam', action: function () {
-    return view('maam');
-});
-
-// Route::get('/coba', action: function () {
-//     return view('cobacoba');
+// Route::get('/arsitektur', function () {
+//     return view('arsitektur');
 // });
+
+// Route::get('/tokoh', function () {
+//     return view('tokohM');
+// });
+
+// Route::get('/tempatibadah', function () {
+//     return view('tempatibadah');
+// });
+
+// Route::get('/budaya', function () {
+//     return view('budaya');
+// });
+
+// Route::get('/maam', action: function () {
+//     return view('maam');
+// });
+
+// // Route::get('/coba', action: function () {
+// //     return view('cobacoba');
+// // });
 
 
 // baru
@@ -110,3 +113,6 @@ Route::get('/wisata/gambar/{id}', [PariwisataController::class, 'gambar'])->name
 Route::get('/bookmark', function () {
     return view('pengunjung.bookmark');
 })->name('bookmark');
+
+// feedback
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
