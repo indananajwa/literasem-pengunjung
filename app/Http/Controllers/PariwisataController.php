@@ -7,73 +7,29 @@ use Illuminate\Http\Request;
 
 class PariwisataController extends Controller
 {
+    /**
+     * Halaman publik: daftar destinasi wisata
+     */
     public function index()
     {
-        $pariwisata = Pariwisata::all();
-        return view('admin.pariwisata.index', compact('pariwisata'));
+        $data = Pariwisata::all();
+        $highlight = Pariwisata::limit(5)->get();
+        return view('pengunjung.pariwisata', compact('data', 'highlight'));
     }
+    
 
-    public function create()
+    /**
+     * Menampilkan gambar dari database (BLOB)
+     */
+    public function gambar($id)
     {
-        return view('admin.pariwisata.create');
-    }
+        $item = Pariwisata::findOrFail($id);
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nama' => 'required',
-            'deskripsi' => 'required',
-            'lokasi' => 'required|url', // Validasi link
-            'foto' => 'nullable|image',
-        ]);
+        if (!$item->foto) {
+            abort(404);
+        }
 
-        $fotoPath = $request->file('foto') ? $request->file('foto')->store('public/foto_pariwisata') : null;
-
-        Pariwisata::create([
-            'nama' => $request->nama,
-            'deskripsi' => $request->deskripsi,
-            'lokasi' => $request->lokasi,
-            'foto' => $fotoPath,
-        ]);
-
-        return redirect()->route('pariwisata.index');
-    }
-
-    public function edit($id)
-    {
-        $pariwisata = Pariwisata::findOrFail($id);
-        return view('admin.pariwisata.edit', compact('pariwisata'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $pariwisata = Pariwisata::findOrFail($id);
-        
-        $request->validate([
-            'nama' => 'required',
-            'deskripsi' => 'required',
-            'lokasi' => 'required|url',
-            'foto' => 'nullable|image',
-        ]);
-
-        $fotoPath = $request->file('foto') ? $request->file('foto')->store('public/foto_pariwisata') : $pariwisata->foto;
-
-        $pariwisata->update([
-            'nama' => $request->nama,
-            'deskripsi' => $request->deskripsi,
-            'lokasi' => $request->lokasi,
-            'foto' => $fotoPath,
-        ]);
-
-        return redirect()->route('pariwisata.index');
-    }
-
-    public function destroy($id)
-    {
-        $pariwisata = Pariwisata::findOrFail($id);
-        $pariwisata->delete();
-
-        return redirect()->route('pariwisata.index');
+        return response($item->foto)
+            ->header('Content-Type', $item->mime_type);
     }
 }
-
